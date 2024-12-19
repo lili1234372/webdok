@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webdok</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Times New Roman", serif;
+            background-color: black;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section .content {
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        section.visible .content {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        section:first-of-type {
+            background: url('nanna_intro.jpg') no-repeat center center/cover;
+            color: red;
+        }
+
+        section:nth-of-type(2) {
+            background: url('nanna_bw.jpg') no-repeat center center/cover;
+        }
+
+        section:nth-of-type(3) {
+            background: url('autovaerksted.jpg') no-repeat center center/cover;
+        }
+
+        section:nth-of-type(4) {
+            background: url('nanna_sportsvogn.jpg') no-repeat center center/cover;
+        }
+
+        section:nth-of-type(5) {
+            background-color: black;
+            color: red;
+        }
+
+        section:nth-of-type(6) {
+            background-color: black;
+            font-style: italic;
+        }
+
+        h1, p {
+            margin: 0;
+        }
+
+        .fade-text {
+            font-size: 24px;
+        }
+
+        .fade-text.small {
+            font-size: 14px;
+        }
+
+        .fade-text.large {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="content">
+            <h1 class="fade-text">“At blive set lige igennem er noget af det mest nedladende man kan gøre ved et menneske”</h1>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="fade-text small">“Ordene flyver over hovedet på Nanna, da samtalen mellem hendes mand og mekanikeren finder sted. Det er som om, at hendes ord ikke kan trænge igennem samtalen, på trods af hun står lige ved siden af.”</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="fade-text small">“Kun når hendes mand gentager hendes eksakte ord og spørgsmål, besvarer mekanikeren dem. Og hendes mand bliver lyttet til. Og spurgt ind til.”</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="fade-text small">“Men det er jo hendes bil?”</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="fade-text large">“Da Nanna triller ud af autoværkstedet i sin højtelskede sportsvogn sammen med sin mand, er det med en arrig følelse i maven. Mens hendes mand blev behandlet med respekt, oplevede hun det stik modsatte. Nanna er langt fra den eneste kvindelige bilejer, der tager fra autoværkstedet med den følelse. Det viser sig nemlig, at der i de mandsdominerede fag, som vi danskere ikke kan undvære, er større risiko for kønsdiskrimination.”</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="content">
+            <p class="fade-text small">“CITAT” - anonym kvinde fra spørgeskema</p>
+            <p class="fade-text small">“CITAT” - anonym kvinde fra spørgeskema</p>
+            <p class="fade-text small">“CITAT” - anonym kvinde fra spørgeskema</p>
+            <p class="fade-text small">“CITAT” - anonym kvinde fra spørgeskema</p>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+
